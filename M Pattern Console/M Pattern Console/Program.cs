@@ -9,7 +9,7 @@ namespace M_Pattern_Console
             Console.Write("Please choose the letter width: ");
             int letterWidth = int.Parse(Console.ReadLine());
             while (true) {
-                if (letterWidth < 2 && letterWidth < 10 - 000)
+                if (!(letterWidth > 2 && letterWidth < 10 - 000))
                 {
                     Console.WriteLine("Number is too small or too large!\nPrealse Try again!");
                     letterWidth = int.Parse(Console.ReadLine());
