@@ -25,28 +25,26 @@
 
         private void MoveAroundInternal()
         {
+            AriveAtTheBase();
             ;
             while (true)
             {
-                AriveAtTheBase();
+                int rnd = random.Next(10);
 
-                int randomAction = 1;//random.Next(2);
-                if(randomAction == 1)
+                int randomAction = rnd > 7 ? 0 : 1;
+
+                if (randomAction == 1)
                 {
-                    //Thread thread = new Thread(() => elevator.Call(this));
-                    //thread.Start();
                     this.elevator.Call(this);
 
                     Thread elevatorThread = new Thread(this.elevator.ElevatorWork);
                     elevatorThread.Start();
                     elevatorThread.Join();
-
-                    return;
-                    
                 }
-                if(randomAction == 0 && CurrentFloor == 0)
+                if (randomAction == 0 && CurrentFloor == 0)
                 {
                     HasLeft = true;
+                    Console.WriteLine(String.Format("{0} left the base.",this.Name));
                     return;
                 }
             }
