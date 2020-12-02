@@ -9,9 +9,6 @@ namespace Area_51
     {
         static void Main(string[] args)
         {
-            Semaphore semaphore = new Semaphore(1,1);
-            int i = 1;
-
             Elevator elevator = new Elevator(new Random());
             var agents =
                 Enumerable.Range(1, 5)
