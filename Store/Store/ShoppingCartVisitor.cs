@@ -7,6 +7,11 @@
     public class ShoppingCartVisitor : IShoppingCartVisitor
     {
         private readonly ICollection<Product> products;
+
+        private const decimal perishableTodayDiscount = 50;
+        private const decimal perishableWithinFiveDaysDiscount = 10;
+        private const decimal workDayClothesDiscount = 10;
+        private const decimal applianceWeekendDiscount = 5;
         public ShoppingCartVisitor()
         {
             products = new List<Product>();
@@ -17,11 +22,11 @@
         {
             if(food.ExpirationDate == DateTime.Today)
             {
-                food.Discount = 50;
+                food.Discount = perishableTodayDiscount;
             }
             else if ((food.ExpirationDate - DateTime.Now).TotalDays <= 5)
             {
-                food.Discount = 10;
+                food.Discount = perishableWithinFiveDaysDiscount;
             }
 
             products.Add(food);
@@ -33,7 +38,7 @@
 
             if (!(day == DayOfWeek.Saturday || day == DayOfWeek.Sunday))
             {
-                clothes.Discount = 10;
+                clothes.Discount = workDayClothesDiscount;
             }
 
             products.Add(clothes);
@@ -43,11 +48,11 @@
         {
             if (beverage.ExpirationDate == DateTime.Today)
             {
-                beverage.Discount = 50;
+                beverage.Discount = perishableTodayDiscount;
             }
             else if ((beverage.ExpirationDate - DateTime.Now).TotalDays <= 5)
             {
-                beverage.Discount = 10;
+                beverage.Discount = perishableWithinFiveDaysDiscount;
             }
 
             products.Add(beverage);
@@ -59,7 +64,7 @@
 
             if ((day == DayOfWeek.Saturday || day == DayOfWeek.Sunday) && appliance.Price > 999)
             {
-                appliance.Discount = 5;
+                appliance.Discount = applianceWeekendDiscount;
             }
 
             products.Add(appliance);

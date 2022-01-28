@@ -12,7 +12,7 @@
         public Agent(Elevator elevator)
         {
             this.elevator = elevator;
-            this.SecurityLevel = (SecurityLevel)random.Next(1, 4);
+            this.SecurityLevel = (SecurityLevel)random.Next(1, 2);
             this.Name = "[" + random.Next(100).ToString() + "]" + "-" + this.SecurityLevel.ToString();
         }
         public string Name { get; private set; }
@@ -25,8 +25,9 @@
 
         private void MoveAroundInternal()
         {
+            
             AriveAtTheBase();
-            ;
+            
             while (true)
             {
                 int rnd = random.Next(10);

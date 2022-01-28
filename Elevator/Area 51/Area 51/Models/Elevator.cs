@@ -72,6 +72,7 @@
 
         public void ElevatorWork()
         {
+            ;
             if (!ElevatorCalls.Any())
             {
                 return;

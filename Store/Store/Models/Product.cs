@@ -65,6 +65,7 @@
             StringBuilder sb = new StringBuilder();
             sb.Append($"{this.Name} {this.Brand}\n");
             sb.Append($"{this.Quantity} x {this.Price} = {this.GetOriginalTotalPrice()}\n");
+
             if(this.Discount != 0)
             {
                 sb.Append($"#discount %{this.Discount} {this.GetDiscount()}");
